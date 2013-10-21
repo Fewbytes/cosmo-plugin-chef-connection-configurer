@@ -36,9 +36,9 @@ def configure_connection(__source_cloudify_id,
                          __source_properties,
                          __target_properties,
                          **kwargs):
-    chef_configure_connection_runlist = __source_properties['chef_configure_connection_runlist']
+    chef_configure_connection_runlist = __source_properties.get('chef_configure_connection_runlist', None)
     target_ip = __source_properties['cloudify_runtime'][__target_cloudify_id]['ip']
-    chef_attributes = __source_properties['chef_attributes']
+    chef_attributes = __source_properties.get('chef_attributes', {})
     chef_attributes['injected'] = {
         'mezzanine_db_host': target_ip
     }
@@ -51,6 +51,6 @@ def configure_connection(__source_cloudify_id,
                          __source_properties,
                          __target_properties,
                          **kwargs):
-    chef_unconfigure_connection_runlist = __source_properties['chef_unconfigure_connection_runlist']
-    chef_attributes = __source_properties['__source_cloudify_id']
+    chef_unconfigure_connection_runlist = __source_properties.get('chef_unconfigure_connection_runlist', None)
+    chef_attributes = __source_properties.get('chef_attributes', None)
     run_chef(chef_unconfigure_connection_runlist, chef_attributes)
