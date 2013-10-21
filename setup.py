@@ -8,7 +8,7 @@ COSMO_CELERY = "https://github.com/CloudifySource/cosmo-celery-common/tarball/{0
 
 CHEF_CLIENT_COMMON_VERSION = "0.1.0"
 CHEF_CLIENT_COMMON_BRANCH = "develop"
-CHEF_CLIENT_COMMON = "https://github.com/dankilman/cosmo-plugin-chef-client-common/tarball/{0}".format(CHEF_CLIENT_COMMON_BRANCH)
+CHEF_CLIENT_COMMON = "https://github.com/CloudifySource/cosmo-plugin-chef-client-common/tarball/{0}".format(CHEF_CLIENT_COMMON_BRANCH)
 
 
 setuptools.setup(
