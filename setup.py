@@ -3,12 +3,12 @@ __author__ = 'dank'
 import setuptools
 
 COSMO_CELERY_VERSION = "0.1.1"
-COSMO_CELERY_BRANCH = "develop"
+COSMO_CELERY_BRANCH = "master"
 COSMO_CELERY = "https://github.com/CloudifySource/cosmo-celery-common/tarball/{0}".format(COSMO_CELERY_BRANCH)
 
 
 CHEF_CLIENT_COMMON_VERSION = "0.1.0"
-CHEF_CLIENT_COMMON_BRANCH = "develop"
+CHEF_CLIENT_COMMON_BRANCH = "master"
 CHEF_CLIENT_COMMON = "https://github.com/CloudifySource/cosmo-plugin-chef-client-common/tarball/{0}".format(CHEF_CLIENT_COMMON_BRANCH)
 
 
