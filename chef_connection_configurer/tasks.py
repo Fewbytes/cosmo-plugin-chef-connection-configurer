@@ -44,9 +44,8 @@ def configure_connection(__source_cloudify_id,
     run_chef(chef_configure_connection_runlist, chef_attributes, __source_properties=__source_properties, **kwargs)
 
 
-# TODO: should be 'unconfigure_connection'
 @celery.task
-def configure_connection(__source_cloudify_id,
+def unconfigure_connection(__source_cloudify_id,
                          __target_cloudify_id,
                          __source_properties,
                          __target_properties,
