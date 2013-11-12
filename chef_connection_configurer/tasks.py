@@ -25,11 +25,10 @@ and run the relevant runlist using the chef_client module.
 
 from cosmo.events import send_event, get_cosmo_properties
 from cosmo.celery import celery
-from chef_client_common.chef_client import set_up_chef_client, run_chef
+from chef_client_common.chef_client import run_chef
 
 
-@celery.task
-@set_up_chef_client
+# TODO: something more generic, not "mezzanine_db_host" inside chef_attributes['injected']
 @celery.task
 def configure_connection(__source_cloudify_id,
                          __target_cloudify_id,
@@ -42,9 +41,10 @@ def configure_connection(__source_cloudify_id,
     chef_attributes['injected'] = {
         'mezzanine_db_host': target_ip
     }
-    run_chef(chef_configure_connection_runlist, chef_attributes)
+    run_chef(chef_configure_connection_runlist, chef_attributes, __source_properties=__source_properties, **kwargs)
 
 
+# TODO: should be 'unconfigure_connection'
 @celery.task
 def configure_connection(__source_cloudify_id,
                          __target_cloudify_id,
@@ -53,4 +53,4 @@ def configure_connection(__source_cloudify_id,
                          **kwargs):
     chef_unconfigure_connection_runlist = __source_properties.get('chef_unconfigure_connection_runlist', None)
     chef_attributes = __source_properties.get('chef_attributes', None)
-    run_chef(chef_unconfigure_connection_runlist, chef_attributes)
+    run_chef(chef_unconfigure_connection_runlist, chef_attributes, __source_properties=__source_properties, **kwargs)
